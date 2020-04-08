@@ -21,9 +21,9 @@ pause
 Wenn man mehrere settings dateien anlegt, kann man dateien aus unterschiedlichen ordnern zusammenführen.
 
 ## TODO
-*[X] Titel aus metainformationen
-*[X] Mehrere Quellordner pro settings.json
-*[ ] ignorieren von nicht unterstützten dateien
-*[ ] komandozeilenparameter
-*[ ] unterstützen von anderen Dateiformaten
-*[ ] hübscheres interface
+* [X] Titel aus metainformationen  
+* [X] Mehrere Quellordner pro settings.json  
+* [ ] ignorieren von nicht unterstützten dateien  
+* [ ] komandozeilenparameter  
+* [ ] unterstützen von anderen Dateiformaten  
+* [ ] hübscheres interface  
