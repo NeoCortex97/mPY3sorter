@@ -23,7 +23,7 @@ Wenn man mehrere settings dateien anlegt, kann man dateien aus unterschiedlichen
 ## TODO
 * [X] Titel aus metainformationen  
 * [X] Mehrere Quellordner pro settings.json  
-* [ ] ignorieren von nicht unterstützten dateien  
+* [X] ignorieren von nicht unterstützten dateien  
 * [ ] komandozeilenparameter  
 * [ ] unterstützen von anderen Dateiformaten  
 * [ ] hübscheres interface  

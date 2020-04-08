@@ -31,26 +31,32 @@ def main(**kwargs):
             print("Betrete Quellordner: {}".format(source))
             artists = dict()
             for item in source.iterdir():
-                audiofile = eyed3.load(item)
-                if audiofile.tag.album_artist not in artists.keys():
-                    artists[audiofile.tag.album_artist] = dict()
-                if audiofile.tag.album not in artists[audiofile.tag.album_artist]:
-                    artists[audiofile.tag.album_artist][audiofile.tag.album] = list()
-                if item not in artists[audiofile.tag.album_artist][audiofile.tag.album]:
-                    artists[audiofile.tag.album_artist][audiofile.tag.album].append((item, audiofile.tag.title))
+                try:
+                    audiofile = eyed3.load(item)
+                    if audiofile.tag.album_artist not in artists.keys():
+                        artists[audiofile.tag.album_artist] = dict()
+                    if audiofile.tag.album not in artists[audiofile.tag.album_artist]:
+                        artists[audiofile.tag.album_artist][audiofile.tag.album] = list()
+                    if item not in artists[audiofile.tag.album_artist][audiofile.tag.album]:
+                        artists[audiofile.tag.album_artist][audiofile.tag.album].append((item, audiofile.tag.title))
+                except AttributeError:
+                    print("Nicht unterstützte Datei \"{}\" übersprungen!".format(item))
 
             for künstler in artists.keys():
                 print("Verarbeite Künstler \"{}\".".format(künstler))
                 for album in artists[künstler].keys():
-                    print("Verarbeite Album \"{}\" von \"{}\"".format(album, künstler))
+                    print("Verarbeite Künstler \"{}\" Album \"{}\"".format(künstler, album))
                     dst_path = destination_base.joinpath(künstler).joinpath(album)
                     dst_path.mkdir(parents=True, exist_ok=True)
                     for title in artists[künstler][album]:
-                        print("Verschiebe Titel \"{}\" aus \"{}\" von \"{}\"".format(title[1], album, künstler))
+                        print("Verarbeite Künstler \"{}\" Album \"{}\" Titel \"{}\"".format(künstler, album, title[1]))
                         if not title[0].is_symlink():
                             tmp_path = dst_path.joinpath(title[1])
                             shutil.move(title[0], tmp_path)
                             title[0].symlink_to(tmp_path)
+            print("Quelle \"{}\" erfolgreich verarbeitet".format(source))
+            print(("#-" * 20) + "#")
+        print("Erolgreich abgeschlossen!")
 
 
 if __name__ == "__main__":
