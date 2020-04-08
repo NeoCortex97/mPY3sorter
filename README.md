@@ -18,12 +18,23 @@ Ein script, dass das tool firekt aufruft könnte ungefähr so aussehen:
 python3 pfad\zu\mPY3sorter.py \pfad\zu\settings.json
 pause  
 ```
-Wenn man mehrere settings dateien anlegt, kann man dateien aus unterschiedlichen ordnern zusammenführen.
+Ein Beispiel für eine config datei:
+```json
+{
+  "sources": [
+    "~/Musik/GoogleMusic_sync/",
+    "~/Musik/Spotify_download/"
+  ],
+  "destination_base_path": "~/Musik/"
+}
+```
+In den eckigen Klammern hinter ```sources``` muss mindestens ein, gerne auch mehrere Ordner angegeben werden aus denen die Dateien gesucht werden sollen.  
+Hinter ```destinanation_base_path```  muss der Ordner angegeben werden, in dem die Sortierten Dateien abgelegt werden sollen.
 
 ## TODO
 * [X] Titel aus metainformationen  
 * [X] Mehrere Quellordner pro settings.json  
 * [X] ignorieren von nicht unterstützten dateien  
-* [ ] komandozeilenparameter  
 * [ ] unterstützen von anderen Dateiformaten  
+* [ ] komandozeilenparameter  
 * [ ] hübscheres interface  
